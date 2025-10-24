@@ -1,6 +1,9 @@
 from flask import Flask
 from extensoes import db, bcrypt, jwt
 
+
+# lembre, sempre que baixar o projeto sem um abiente virtual, crie um e rode: pip install -r requeriments.txt
+
 def create_app():
     app = Flask(__name__)
 

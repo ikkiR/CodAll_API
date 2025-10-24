@@ -1,4 +1,4 @@
-/venv
+/ambiente
 /como_conectar_ao_banco_externo.py
 /como_conectar_ao_sqlite.py
 /como_criar_uma_apu_flask.py
