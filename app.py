@@ -1,23 +1,24 @@
 from flask import Flask
+from flask_cors import CORS
 from extensoes import db, bcrypt, jwt
-
-
-# lembre, sempre que baixar o projeto sem um abiente virtual, crie um e rode: pip install -r requeriments.txt
 
 def create_app():
     app = Flask(__name__)
 
-    # Configuração do banco (MariaDB no XAMPP)
+    # Configuração do banco
     app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:@localhost/codeall'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['JWT_SECRET_KEY'] = 'a1047962b5dc7ae24409567ce9949c6f62ed60da70d8d010d0b488f2b717960b'
+
+    # Ativa o CORS
+    CORS(app, resources={r"/*": {"origins": "*"}})
 
     # Inicializa as extensões
     db.init_app(app)
     bcrypt.init_app(app)
     jwt.init_app(app)
 
-    # Importa e registra as rotas (depois você cria o arquivo routes)
+    # Importa e registra as rotas
     from rotas import regitrar_rotas
     regitrar_rotas(app)
 

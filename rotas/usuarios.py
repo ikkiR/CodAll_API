@@ -84,7 +84,8 @@ def login():
             "tipo_usuario": usuario.tipo_usuario
         },expires_delta=datetime.timedelta(hours=1)) #aqui criamos um token - um token armazena os dados do usuário de forma codificada. podemos escolher quais informações do usuario o token guarda.
         #    gera um token de acesso/identifica o usuario dentro do token/define quanto tempo o token vai ser valido
-        return jsonify({"token": token,})
+        return jsonify({"token": token, "usuario":{"nome":usuario.nome}})
+        return jsonify({"token": token, "usuario":{"nome":usuario.nome}})
     return jsonify({"erro": "Email ou senhas incorretos!"}), 401
 
 
